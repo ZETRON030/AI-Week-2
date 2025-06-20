@@ -42,6 +42,9 @@ The project involved exploring two classification algorithms: Random Forest and 
     *   Recall: 1.00
     *   F1-score: 1.00
 
+* Randomforest Algorithm[![alt text](screenshots/metrics.png)]
+* Confusion Matrix[![alt text](screenshots/confusion_matrix.png)]
+
 *   **Observation:** 
 While the Random Forest model initially showed perfect performance on the test set, further analysis (including comparison with training metrics and cross-validation, though not explicitly shown for RF in the final notebook) indicated this was likely a sign of **overfitting**, where the model had memorized the training data too well and its performance would not generalize to truly unseen data. This highlighted the need for a more robust modeling approach.
 
@@ -57,6 +60,8 @@ Recognizing the overfitting issue with the highly flexible Random Forest on this
     *   The regularization parameter `C` was tuned across an expanded range: `[0.001, 0.01, 0.1, 1, 10, 100, 500, 1000]`.
     *   The optimization metric for Grid Search was the **F1-score**, which balances Precision and Recall.
 
+* Logistic regression [![alt text](screenshots/LR_metrics.png)]
+
 *   **Tuned Model Performance (Evaluated on Independent Test Set):**
     *   **Best Parameter Found:** `{'C': 10}`
     *   **Best Cross-Validation F1-score:** ~0.84
@@ -67,6 +72,8 @@ Recognizing the overfitting issue with the highly flexible Random Forest on this
         *   F1-score: 0.81
 
 *   **Overfitting Addressed:** By comparing the training set metrics of the tuned Logistic Regression model (F1-score: 0.85) with the test set metrics (F1-score: 0.81) and the cross-validation F1-score (~0.84), we confirmed that the gap in performance is minimal. This indicates that the tuning process successfully mitigated severe overfitting, resulting in a model that generalizes well to unseen data.
+
+* Overfitting Addressed[![alt text](screenshots/Tuned_LR.png)]
 
 ---
 
