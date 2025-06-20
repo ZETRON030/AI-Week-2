@@ -1,0 +1,89 @@
+summary 
+
+
+---
+
+ AI for Sustainable Agriculture
+
+Project Title: Predicting Crop Failure using Machine Learning
+SDG Focus: Goal 2 – Zero Hunger
+
+
+---
+
+ Objective
+
+To build a machine learning model that can predict potential crop failure based on environmental conditions such as soil nutrients, temperature, humidity, pH, and rainfall. The goal is to help farmers and policymakers take preventive action to reduce crop loss and support food security.
+
+
+---
+
+ Dataset Overview
+
+Source: Crop_recommendation.csv
+
+Features Used:
+
+Soil Nutrients: Nitrogen (N), Phosphorous (P), Potassium (K)
+
+Environmental: Temperature (°C), Humidity (%), Rainfall (mm), pH level
+
+
+Target (Simulated):
+
+Crop failure (1) vs. No failure (0)
+
+Failure defined by low rainfall (< 60 mm), low pH (< 5.5), or low humidity (< 45%)
+
+
+
+
+---
+
+ Methodology
+
+Preprocessing: Data normalized using StandardScaler
+
+Model: RandomForestClassifier
+
+Training/Test Split: 80% training, 20% testing
+
+Tools: Python, pandas, scikit-learn, seaborn, matplotlib
+
+
+
+---
+
+ Results
+
+Accuracy: 100%
+
+Precision, Recall, F1-Score: 100%
+
+Confusion Matrix: Showed perfect classification
+
+Overfitting: None detected – both training and test performance were equal
+
+
+
+---
+
+ Impact
+
+This model can be integrated into agritech tools to alert farmers about unfavorable conditions in advance, allowing for timely interventions (e.g., irrigation, fertilization, or crop switching), supporting food production and minimizing waste.
+
+
+---
+
+Future Directions
+
+To Use real-world crop yield and failure datasets
+
+To Include location-based and satellite data
+
+ To Deploy as a mobile or web-based advisory tool for farmers
+
+
+
+
+
