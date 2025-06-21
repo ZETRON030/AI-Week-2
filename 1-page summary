@@ -36,35 +36,60 @@ Crop failure (1) vs. No failure (0)
 Failure defined by low rainfall (< 60 mm), low pH (< 5.5), or low humidity (< 45%)
 
 
+---
 
+### Methodology
+
+The project involved the following steps:
+
+1.  **Data Preparation:**
+    *   Loading the dataset and creating the synthetic 'failure' target variable.
+    *   Separating features and the target.
+    *   Normalizing features using `StandardScaler`.
+    *   Splitting data into 80% for training and 20% for testing.
+
+2.  **Initial Model Exploration (Random Forest):**
+    *   An initial model was built using `RandomForestClassifier` with default parameters.
+    *   This model achieved seemingly perfect metrics (Accuracy, Precision, Recall, F1-Score = 1.00) on both training and test datasets.
+
+3.  **Identifying Overfitting:**
+    *   While the perfect scores on the test set were initially promising, achieving 100% accuracy on a test set is often a strong indicator of **overfitting**, especially with a powerful model like Random Forest on a potentially simple, synthetically labeled dataset.
+
+4.  **Refined Approach with Logistic Regression:**
+    *   To address the overfitting concern and build a more robust model, we shifted our focus to `LogisticRegression`, a simpler and more interpretable algorithm.
+    *   We implemented a systematic approach to optimize the Logistic Regression model.
+
+5.  **Hyperparameter Tuning and Cross-Validation (Logistic Regression):**
+    *   We used `GridSearchCV` with 5-fold cross-validation on the training data to find the optimal regularization parameter, `C`.
+    *   An expanded range of `C` values was explored: `[0.001, 0.01, 0.1, 1, 10, 100, 500, 1000]`.
+    *   The tuning process aimed to maximize the **F1-score**, balancing precision and recall, while using cross-validation to ensure the performance was consistent across different data subsets.
+
+6.  Training/Test Split: 80% training, 20% testing
+
+7.  Tools: Python, pandas, scikit-learn, seaborn, matplotlib
 
 ---
 
- Methodology
+### Results
 
-Preprocessing: Data normalized using StandardScaler
+*   **Initial Random Forest Model:**
+    *   Accuracy: 1.00 (Training and Test)
+    *   Metrics: Precision, Recall, F1-Score = 1.00
+    *   **Conclusion:** Evidence suggested **severe overfitting**.
 
-Model: RandomForestClassifier
-
-Training/Test Split: 80% training, 20% testing
-
-Tools: Python, pandas, scikit-learn, seaborn, matplotlib
-
-
-
----
-
- Results
-
-Accuracy: 100%
-
-Precision, Recall, F1-Score: 100%
-
-Confusion Matrix: Showed perfect classification
-
-Overfitting: None detected – both training and test performance were equal
-
-
+*   **Tuned Logistic Regression Model (Optimal C=10 found via Grid Search):**
+    *   Best Cross-Validation F1-score: ~0.84
+    *   Performance on Training Data:
+        *   Accuracy: 0.88
+        *   Precision: 0.83
+        *   Recall: 0.86
+        *   F1-Score: 0.85
+    *   Performance on Independent Test Data:
+        *   Accuracy: 0.87
+        *   Precision: 0.80
+        *   Recall: 0.83
+        *   F1-Score: 0.81
+    *   **Conclusion:** The close proximity of training, test, and cross-validation metrics indicates that **severe overfitting has been addressed**. The tuned Logistic Regression model demonstrates good generalization ability.
 
 ---
 
